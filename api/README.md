@@ -1,24 +1,25 @@
-# README
+# Min Blog API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+API REST para o sistema de blog construída com Ruby on Rails.
 
-Things you may want to cover:
+## Configuração e Execução
 
-* Ruby version
+### Pré-requisitos
 
-* System dependencies
+- Ruby version
 
-* Configuration
+- System dependencies
 
-* Database creation
+- Configuration
 
-* Database initialization
+- Database creation
 
-* How to run the test suite
+- Database initialization
 
-* Services (job queues, cache servers, search engines, etc.)
+- How to run the test suite
 
-* Deployment instructions
+- Services (job queues, cache servers, search engines, etc.)
 
-* ...
+- Deployment instructions
+
+- ...

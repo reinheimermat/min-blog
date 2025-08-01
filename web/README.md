@@ -1,4 +1,6 @@
-# Chiri 🌸
+# Min Blog Web 🌸
+
+Frontend do Min Blog construído com Astro.
 
 ![screenshot-light](public/screenshots/screenshot-light.png)
 ![screenshot-dark](public/screenshots/screenshot-dark.png)

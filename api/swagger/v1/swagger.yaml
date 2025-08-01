@@ -1,0 +1,187 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/posts":
+    get:
+      summary: Lists all posts
+      tags:
+      - - Posts
+      responses:
+        '200':
+          description: Posts found
+    post:
+      summary: Creates a post
+      tags:
+      - - Posts
+      parameters: []
+      responses:
+        '201':
+          description: Post created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+                author:
+                  type: string
+              required:
+              - title
+              - body
+              - author
+  "/posts/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: Post ID
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Retrieves a post
+      tags:
+      - - Posts
+      responses:
+        '200':
+          description: Post found
+        '404':
+          description: Post not found
+    put:
+      summary: Updates a post
+      tags:
+      - - Posts
+      parameters: []
+      responses:
+        '200':
+          description: Post updated
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+                author:
+                  type: string
+              required:
+              - title
+              - body
+              - author
+    delete:
+      summary: Deletes a post
+      tags:
+      - - Posts
+      responses:
+        '204':
+          description: Post deleted
+        '404':
+          description: Post not found
+  "/posts/{id}/comments":
+    get:
+      summary: Lists comments for a post
+      tags:
+      - Comments
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Comments found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    post_id:
+                      type: string
+                    author:
+                      type: string
+                    body:
+                      type: string
+    post:
+      summary: Creates a comment on a post
+      tags:
+      - Comments
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Comment created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  post_id:
+                    type: string
+                  author:
+                    type: string
+                  body:
+                    type: string
+  "/posts/{id}/comments/{comment_id}":
+    parameters:
+    - name: id
+      in: path
+      description: Post ID
+      required: true
+      schema:
+        type: string
+    - name: comment_id
+      in: path
+      description: Comment ID
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Retrieves a comment
+      tags:
+      - Comments
+      responses:
+        '200':
+          description: Comment found
+        '404':
+          description: Comment not found
+    put:
+      summary: Updates a comment
+      tags:
+      - Comments
+      responses:
+        '200':
+          description: Comment updated
+    delete:
+      summary: Deletes a comment
+      tags:
+      - Comments
+      responses:
+        '204':
+          description: Comment deleted
+        '404':
+          description: Comment not found
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com

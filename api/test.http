@@ -1,0 +1,70 @@
+### Create a post
+POST http://localhost:3000/posts HTTP/1.1
+content-type: application/json
+
+{
+    "post": {
+        "title": "The history of Ruby",
+        "body": "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "author": "Matheus Reinheimer"
+    }
+}
+
+### Get all posts
+GET http://localhost:3000/posts HTTP/1.1
+content-type: application/json
+
+### Get a single post
+GET http://localhost:3000/posts/cmdrrm6cf0000k1ijb6lytyd4 HTTP/1.1
+content-type: application/json
+
+### Update a post
+PUT http://localhost:3000/posts/cmdrrm6cf0000k1ijb6lytyd4 HTTP/1.1
+content-type: application/json
+
+{
+    "post": {
+        "title": "The history of Ruby - Updated",
+        "body": "lorem ipsum dolor sit amet, consectetur adipiscing elit. Updated.",
+        "author": "Matheus Reinheimer"
+    }
+}
+
+### Delete a post
+DELETE http://localhost:3000/posts/cmdrrm6cf0000k1ijb6lytyd4 HTTP/1.1
+content-type: application/json
+
+### Create a comment for the post
+
+POST http://localhost:3000/posts/cmdrrm6cf0000k1ijb6lytyd4/comments HTTP/1.1
+content-type: application/json
+
+{
+    "comment": {
+        "body": "Very interesting post!",
+        "author": "John Doe"
+    }
+}
+
+### Get all comments for a post
+GET http://localhost:3000/posts/cmdrrm6cf0000k1ijb6lytyd4/comments HTTP/1.1
+content-type: application/json
+
+### Get a single comment
+GET http://localhost:3000/comments/cmdrrtbio0001k1ijdntg9m0f HTTP/1.1
+content-type: application/json
+
+### Update a comment
+PUT http://localhost:3000/comments/cmdrrtbio0001k1ijdntg9m0f HTTP/1.1
+content-type: application/json
+
+{
+    "comment": {
+        "body": "Very interesting post! - Updated",
+        "author": "John Doe"
+    }
+}
+
+### Delete a comment
+DELETE http://localhost:3000/comments/cmdrrtbio0001k1ijdntg9m0f HTTP/1.1
+content-type: application/json

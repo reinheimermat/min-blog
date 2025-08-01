@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: postgres
+  password: 123456
+  port: 5432
+  pool: 5
+
+development:
+  <<: *default
+  database: min_blog_development
+
+
+test:
+  <<: *default
+  database: min_blog_test
+
+production:
+  <<: *default
+  database: min_blog_production
+  username: min_blog
+  password: <%= ENV['MIN_BLOG_DATABASE_PASSWORD'] %>

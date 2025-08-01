@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: min_blog_development
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:latest
+    ports:
+      - "8080:8978"
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - CB_DB_HOST=db
+      - CB_DB_PORT=5432
+      - CB_DB_USER=postgres
+      - CB_DB_PASSWORD=123456
+    # Montar volume para persistir configurações (opcional)
+    volumes:
+      - cloudbeaver_workspace:/opt/cloudbeaver/workspace
+
+volumes:
+  db_data:
+  cloudbeaver_workspace:
